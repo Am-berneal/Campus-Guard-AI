@@ -1,0 +1,181 @@
+/* Page skeleton: sidebar + top bar + content. Mobile-first breakpoint at 900px. */
+
+.app-shell {
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-sidebar);
+  color: var(--color-sidebar-text);
+  z-index: 30;
+  transform: translateX(-100%);          /* hidden on small screens */
+  transition: transform 0.2s ease;
+}
+
+.sidebar-open .sidebar {
+  transform: translateX(0);
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 0.35);
+  border: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--topbar-height);
+  padding: 0 18px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.sidebar-brand-name {
+  color: #fff;
+  font-weight: 650;
+}
+
+.sidebar-brand-sub {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  background: rgb(255 255 255 / 0.06);
+}
+
+.sidebar-link.active {
+  background: var(--color-sidebar-active);
+  color: #fff;
+  font-weight: 600;
+}
+
+.sidebar-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sidebar-link.disabled:hover {
+  background: none;
+}
+
+.sidebar-link .badge {
+  margin-left: auto;
+}
+
+.sidebar-icon {
+  width: 18px;
+  text-align: center;
+}
+
+.sidebar-section-label {
+  margin: 16px 12px 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.sidebar-footer {
+  padding: 14px 18px;
+  font-size: 0.78rem;
+  opacity: 0.7;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+
+/* ---------- Top bar + content ---------- */
+.app-main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topbar-title {
+  flex: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.app-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 16px 40px;
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 900px) {
+  .sidebar {
+    transform: none;
+  }
+
+  .sidebar-backdrop,
+  .menu-button {
+    display: none;
+  }
+
+  .app-main {
+    margin-left: var(--sidebar-width);
+  }
+
+  .topbar {
+    padding: 0 28px;
+  }
+
+  .app-content {
+    padding: 28px 28px 48px;
+  }
+}

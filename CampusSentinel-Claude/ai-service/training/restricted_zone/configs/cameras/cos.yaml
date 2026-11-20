@@ -1,0 +1,45 @@
+# Restricted entry for simulated camera 'cos' (COS).
+# Same format as ../zones.sample.yaml, plus camera_name / closing_time / restricted_until.
+#
+# CAMPUS RULE (official): no entry from 8:00 PM (20:00) onwards, campus time Asia/Kolkata.
+#   - inclusive: at exactly 20:00 entry is already prohibited
+#   - restricted_until "24:00" = the rule as given ends at midnight. The campus OPENING time was
+#     not provided, so 00:00 until opening is NOT treated as restricted. If entry is also
+#     prohibited after midnight, set restricted_until to the opening time (e.g. "06:00").
+#
+# ZONE GEOMETRY IS A PLACEHOLDER (calibrated: false). The polygon is NOT a measured campus
+# boundary. Before relying on results, draw the real monitored area on this camera's view:
+#   python -m training.restricted_zone.pick_zone --source <recording from this camera>
+# then paste the printed polygon below and set calibrated: true.
+#
+# Times MUST be quoted: YAML reads an unquoted 20:00 as the number 1200.
+
+campus_timezone: Asia/Kolkata
+camera_id: cos
+camera_name: COS
+closing_time: "20:00"
+restricted_until: "24:00"
+
+detector:
+  weights: models/person/yolo26n.pt   # ignored by the AI service (it uses the model chosen in inference/model_manager.py)
+  confidence: 0.4
+  iou: 0.5
+  image_size: 640
+  device: auto
+  half: true
+
+tracker:
+  config: training/restricted_zone/trackers/bytetrack_campus.yaml
+
+incidents:
+  min_dwell_seconds: 1.0     # inside the zone after closing for at least 1 s
+  cooldown_seconds: 300      # one incident per tracked person per zone per 5 minutes
+  save_evidence_frames: true
+
+zones:
+  - id: cos-monitored-area
+    name: COS monitored area
+    status: restricted
+    calibrated: false        # PLACEHOLDER geometry, see header
+    polygon: [[0.00, 0.60], [0.50, 0.60], [0.50, 1.00], [0.00, 1.00]]
+    # no "schedule": this zone uses closing_time / restricted_until above

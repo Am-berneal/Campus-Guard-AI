@@ -1,0 +1,210 @@
+{
+ "upload_id": "de969a8f-cb79-4439-b8e5-06fc171011b5",
+ "camera_id": "cos",
+ "camera_name": "COS",
+ "source": "simulated camera (uploaded recording)",
+ "status": "completed",
+ "video": {
+  "fps": 30.0,
+  "frame_count": 150,
+  "width": 320,
+  "height": 240,
+  "duration_seconds": 5.0
+ },
+ "analysis": {
+  "fighting": {
+   "available": true,
+   "status": "completed",
+   "model": "cnn_lstm",
+   "predicted_class": "NonFight",
+   "fight_probability": 0.2065,
+   "nonfight_probability": 0.7935,
+   "threshold": 0.5,
+   "potential_incident": false,
+   "events": [],
+   "windows": [
+    {
+     "window": 0,
+     "start_frame": 0,
+     "end_frame": 150,
+     "start_s": 0.0,
+     "end_s": 5.0,
+     "fight_probability": 0.2065
+    }
+   ],
+   "sampling": {
+    "window_seconds": 5.0,
+    "frames_per_window": 16,
+    "windows_analysed": 1,
+    "frame_indices_first_window": [
+     0,
+     10,
+     20,
+     30,
+     40,
+     50,
+     60,
+     70,
+     79,
+     89,
+     99,
+     109,
+     119,
+     129,
+     139,
+     149
+    ]
+   },
+   "notes": []
+  },
+  "smoking": {
+   "available": true,
+   "status": "completed",
+   "models": {
+    "smoking_cnn": true,
+    "cigarette_yolo": true
+   },
+   "potential_incident": false,
+   "events": [],
+   "rule": "both",
+   "thresholds": {
+    "cnn": 0.5,
+    "cigarette": 0.35,
+    "min_frames": 2
+   },
+   "summary": {
+    "frames_sampled": 10,
+    "sample_interval_s": 0.5,
+    "frames_cnn_positive": 10,
+    "frames_with_cigarette": 0,
+    "max_cnn_smoking_probability": 0.8747,
+    "mean_cnn_smoking_probability": 0.8595,
+    "max_cigarette_confidence": 0.0
+   },
+   "detections": [],
+   "notes": []
+  },
+  "restricted_zone": {
+   "available": true,
+   "status": "completed",
+   "potential_incident": true,
+   "events": [
+    {
+     "event_id": "restricted_zone-afterhours-42",
+     "type": "restricted_zone",
+     "detection_mode": "after_hours_person_presence",
+     "start_s": 1.4,
+     "end_s": 4.8,
+     "confidence": 0.7808,
+     "camera_id": "cos",
+     "camera_name": "COS",
+     "closing_time": "20:00",
+     "closing_time_display": "8:00 PM",
+     "recorded_local_time": "2026-11-17T21:35:49+05:30",
+     "recorded_utc_time": "2026-11-17T16:05:49+00:00",
+     "persons_max_in_frame": 1,
+     "frames_with_person": 9,
+     "description": "Potential after-hours person detected in COS at 9:35 PM IST. Configured closing time: 8:00 PM.",
+     "evidence": [
+      {
+       "time_s": 1.4,
+       "frame_index": 42,
+       "confidence": 0.4216,
+       "image": "afterhours_42_42.jpg",
+       "details": {
+        "persons": 1,
+        "person_boxes": [
+         {
+          "bbox_xyxy_px": [
+           108.4,
+           99.7,
+           120.0,
+           122.7
+          ],
+          "confidence": 0.4216
+         }
+        ],
+        "timestamp_local": "2026-11-17T21:35:49+05:30",
+        "closing_time": "20:00"
+       }
+      },
+      {
+       "time_s": 4.8,
+       "frame_index": 144,
+       "confidence": 0.7808,
+       "image": "afterhours_42_144.jpg",
+       "details": {
+        "persons": 1,
+        "person_boxes": [
+         {
+          "bbox_xyxy_px": [
+           9.4,
+           101.0,
+           37.9,
+           156.0
+          ],
+          "confidence": 0.7808
+         }
+        ],
+        "timestamp_local": "2026-11-17T21:35:52+05:30",
+        "closing_time": "20:00"
+       }
+      }
+     ]
+    }
+   ],
+   "rule": {
+    "mode": "after_hours_person_presence",
+    "closing_time": "20:00",
+    "restricted_until": "24:00",
+    "closing_time_display": "8:00 PM",
+    "campus_timezone": "Asia/Kolkata",
+    "person_confidence_threshold": 0.4
+   },
+   "summary": {
+    "frames_sampled": 25,
+    "sample_fps": 5.0,
+    "frames_after_closing": 25,
+    "frames_in_restricted_period": 25,
+    "frames_after_closing_with_person": 9,
+    "max_people_in_frame": 1,
+    "recorded_at_local": "2026-11-17T21:35:48+05:30",
+    "video_end_local": "2026-11-17T21:35:53+05:30",
+    "recorded_at_note": "recording time converted from UTC+0530 to Asia/Kolkata",
+    "campus_timezone": "Asia/Kolkata",
+    "config": "cos.yaml"
+   }
+  }
+ },
+ "potential_incident_count": 1,
+ "processing": {
+  "device": "cuda",
+  "duration_seconds": 4.11,
+  "module_seconds": {
+   "fighting": 0.51,
+   "smoking": 2.17,
+   "restricted_zone": 1.4
+  },
+  "started_at": "2026-11-18T07:05:56+00:00",
+  "settings": {
+   "device": "auto",
+   "fight_threshold": null,
+   "fight_window_seconds": 5.0,
+   "fight_max_windows": 24,
+   "smoking_sample_interval_s": 0.5,
+   "smoking_max_frames": 240,
+   "smoking_cnn_threshold": 0.5,
+   "cigarette_confidence": 0.35,
+   "smoking_rule": "both",
+   "smoking_min_frames": 2,
+   "zone_sample_fps": 5.0,
+   "event_gap_s": 2.0,
+   "max_evidence_per_event": 3
+  }
+ },
+ "disclaimer": "All results are POTENTIAL incidents produced by AI models from a simulated camera upload. They may be wrong and must be reviewed by an administrator before any action.",
+ "request": {
+  "camera_id": "cos",
+  "recorded_at": "2026-11-17T21:35:48+05:30"
+ }
+}

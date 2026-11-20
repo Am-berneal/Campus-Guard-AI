@@ -1,0 +1,10 @@
+VALIDATION classification report — best epoch 1
+
+              precision   recall  f1-score  support
+    NonFight     0.0000   0.0000    0.0000        0
+       Fight     0.0000   0.0000    0.0000        8
+
+    accuracy                        0.0000        8
+   macro avg     0.0000   0.0000    0.0000        8
+weighted avg     0.0000   0.0000    0.0000        8
+(threshold 0.5)

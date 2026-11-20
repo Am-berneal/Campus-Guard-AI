@@ -1,0 +1,25 @@
+# Restricted zones for simulated camera 'library' (Outside Library).
+# FICTIONAL demo zones and schedules: not real campus rules. Same format as ../zones.sample.yaml.
+# Redraw polygons for your own clip with: python -m training.restricted_zone.pick_zone --source <video>
+# (detector.weights is ignored by the AI service, which uses the model chosen in inference/model_manager.py)
+campus_timezone: Asia/Kolkata
+camera_id: library
+detector: {weights: models/person/yolo26n.pt, confidence: 0.4, iou: 0.5, image_size: 640,
+  device: auto, half: true}
+tracker: {config: training/restricted_zone/trackers/bytetrack_campus.yaml}
+incidents: {min_dwell_seconds: 1.0, cooldown_seconds: 300, save_evidence_frames: true}
+zones:
+- id: library-entrance-after-hours
+  name: Library entrance (after hours, fictional)
+  status: restricted
+  polygon:
+  - [0.05, 0.55]
+  - [0.55, 0.5]
+  - [0.6, 0.98]
+  - [0.02, 0.98]
+  schedule:
+    default: restricted
+    allowed:
+    - days: [mon, tue, wed, thu, fri]
+      start: 08:00
+      end: '20:00'

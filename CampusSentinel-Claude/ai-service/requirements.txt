@@ -1,0 +1,9 @@
+# CampusSentinel AI service — Python dependencies (Windows, Python 3.12)
+#
+# PyTorch is installed SEPARATELY first, with CUDA support (plain PyPI torch is CPU-only on Windows):
+#   pip install torch==2.15.0 torchvision --index-url https://download.pytorch.org/whl/cu134
+# Ultralytics accepts the already-installed torch and does not replace it.
+
+ultralytics==8.4.212   # YOLO detection + tracking; also installs opencv-python, PyYAML, numpy, matplotlib
+lap>=0.5.12            # linear assignment used by the ByteTrack tracker
+tzdata                 # IANA time-zone data (Windows has none built in; needed for Asia/Kolkata)

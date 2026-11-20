@@ -1,0 +1,134 @@
+{
+ "upload_id": "9ed2ab6b-e0ca-406e-b337-02ba26d1aa03",
+ "camera_id": "cos",
+ "camera_name": "COS",
+ "source": "simulated camera (uploaded recording)",
+ "status": "partial",
+ "video": {
+  "fps": 30.0,
+  "frame_count": 150,
+  "width": 320,
+  "height": 240,
+  "duration_seconds": 5.0
+ },
+ "analysis": {
+  "fighting": {
+   "available": true,
+   "status": "completed",
+   "model": "cnn_lstm",
+   "predicted_class": "NonFight",
+   "fight_probability": 0.2065,
+   "nonfight_probability": 0.7935,
+   "threshold": 0.5,
+   "potential_incident": false,
+   "events": [],
+   "windows": [
+    {
+     "window": 0,
+     "start_frame": 0,
+     "end_frame": 150,
+     "start_s": 0.0,
+     "end_s": 5.0,
+     "fight_probability": 0.2065
+    }
+   ],
+   "sampling": {
+    "window_seconds": 5.0,
+    "frames_per_window": 16,
+    "windows_analysed": 1,
+    "frame_indices_first_window": [
+     0,
+     10,
+     20,
+     30,
+     40,
+     50,
+     60,
+     70,
+     79,
+     89,
+     99,
+     109,
+     119,
+     129,
+     139,
+     149
+    ]
+   },
+   "notes": []
+  },
+  "smoking": {
+   "available": true,
+   "status": "completed",
+   "models": {
+    "smoking_cnn": true,
+    "cigarette_yolo": true
+   },
+   "potential_incident": false,
+   "events": [],
+   "rule": "both",
+   "thresholds": {
+    "cnn": 0.5,
+    "cigarette": 0.35,
+    "min_frames": 2
+   },
+   "summary": {
+    "frames_sampled": 10,
+    "sample_interval_s": 0.5,
+    "frames_cnn_positive": 10,
+    "frames_with_cigarette": 0,
+    "max_cnn_smoking_probability": 0.8747,
+    "mean_cnn_smoking_probability": 0.8595,
+    "max_cigarette_confidence": 0.0
+   },
+   "detections": [],
+   "notes": []
+  },
+  "restricted_zone": {
+   "available": true,
+   "status": "time_unknown",
+   "reason": "After-hours check not evaluated: recording time 2026-11-20T21:48:18+05:30 is in the future. Provide the recording start time (campus time, Asia/Kolkata) to check for persons after 8:00 PM.",
+   "potential_incident": false,
+   "events": [],
+   "rule": {
+    "mode": "after_hours_person_presence",
+    "closing_time": "20:00",
+    "restricted_until": "24:00",
+    "closing_time_display": "8:00 PM",
+    "campus_timezone": "Asia/Kolkata",
+    "person_confidence_threshold": 0.4
+   }
+  }
+ },
+ "potential_incident_count": 0,
+ "processing": {
+  "device": "cuda",
+  "duration_seconds": 3.29,
+  "module_seconds": {
+   "fighting": 0.58,
+   "smoking": 2.63,
+   "restricted_zone": 0.06
+  },
+  "started_at": "2026-11-20T06:18:27+00:00",
+  "settings": {
+   "device": "auto",
+   "fight_threshold": null,
+   "fight_window_seconds": 5.0,
+   "fight_max_windows": 24,
+   "smoking_sample_interval_s": 0.5,
+   "smoking_max_frames": 240,
+   "smoking_cnn_threshold": 0.5,
+   "cigarette_confidence": 0.35,
+   "smoking_rule": "both",
+   "smoking_min_frames": 2,
+   "zone_sample_fps": 5.0,
+   "event_gap_s": 2.0,
+   "max_evidence_per_event": 3
+  }
+ },
+ "disclaimer": "All results are POTENTIAL incidents produced by AI models from a simulated camera upload. They may be wrong and must be reviewed by an administrator before any action.",
+ "request": {
+  "camera_id": "cos",
+  "recorded_at": "2026-11-20T21:48:18+05:30"
+ }
+}

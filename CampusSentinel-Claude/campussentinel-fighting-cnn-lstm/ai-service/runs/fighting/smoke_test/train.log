@@ -1,0 +1,12 @@
+13:11:17 INFO    ==========================================================================
+13:11:17 INFO    CNN-LSTM fighting training | device cuda (NVIDIA GeForce RTX 4050 Laptop GPU) | AMP off
+13:11:17 INFO    train 1600 clips {'NonFight': 800, 'Fight': 800} | val 400 clips {'NonFight': 200, 'Fight': 200} | NO test split (RWF-2000 has train/val only)
+13:11:17 INFO    parameters: 11,998,017 total, 821,505 trainable | backbone frozen
+13:11:17 INFO    config: {"epochs": 1, "batch_size": 4, "lr": 0.001, "backbone_lr": 0.0001, "weight_decay": 0.01, "patience": 5, "lr_patience": 2, "threshold": 0.5, "workers": 0, "amp": false, "hflip": true, "seed": 42, "extra": {"data_root": "D:\\CampusSentinel-Datasets\\fighting_processed", "max_batches": 2}, "model": {"feature_dim": 512, "hidden_size": 256, "num_layers": 1, "lstm_dropout": 0.3, "head_dropout": 0.5, "pretrained": true, "freeze_backbone": true, "train_layer4": false}}
+13:11:17 INFO    run folder: runs\fighting\smoke_test | checkpoints: models\fighting\cnn_lstm_smoke
+13:11:17 WARNING --max-batches 2: SMOKE TEST ONLY, metrics are not meaningful
+13:11:19 INFO    ep  1 | lr 1.0e-03 | train loss 0.7158 acc 0.375 | val loss 0.8100 acc 0.000 P 0.000 R 0.000 F1 0.000 AUC nan | 2s  * best
+13:11:19 INFO    --------------------------------------------------------------------------
+13:11:19 INFO    Stopped: reached max epochs (1) | time this session: 0m 02s
+13:11:19 INFO    BEST (VALIDATION) epoch 1: loss 0.8100 acc 0.0000 precision 0.0000 recall 0.0000 F1 0.0000 ROC-AUC n/a
+13:11:19 INFO    Checkpoints: models\fighting\cnn_lstm_smoke | run outputs: runs\fighting\smoke_test

@@ -1,0 +1,287 @@
+/* Reusable component styles. */
+
+/* ---------- Page header ---------- */
+.page-header {
+  margin-bottom: 18px;
+}
+
+.page-header h1 {
+  font-size: 1.5rem;
+}
+
+.page-header p {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Panels ---------- */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.panel-header h2 {
+  font-size: 1.05rem;
+}
+
+.panel-note {
+  margin: 14px 0 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.two-column {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1000px) {
+  .two-column {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Notice ---------- */
+.notice {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--color-neutral-bg);
+  border: 1px dashed var(--color-neutral);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.stat-card.is-placeholder {
+  border-style: dashed;
+}
+
+.stat-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.stat-value {
+  margin-top: 6px;
+  font-size: 1.9rem;
+  font-weight: 650;
+}
+
+.is-placeholder .stat-value {
+  color: var(--color-neutral);
+}
+
+.stat-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-muted {
+  background: var(--color-neutral-bg);
+  color: var(--color-neutral);
+}
+
+.sidebar .badge-muted {
+  background: rgb(255 255 255 / 0.1);
+  color: inherit;
+}
+
+/* ---------- Buttons ---------- */
+.button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--color-neutral-bg);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---------- Backend status ---------- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.status-checking { color: var(--color-neutral); background: var(--color-neutral-bg); }
+.status-online   { color: var(--color-ok);      background: var(--color-ok-bg); }
+.status-degraded { color: var(--color-warn);    background: var(--color-warn-bg); }
+.status-offline  { color: var(--color-danger);  background: var(--color-danger-bg); }
+
+/* Very narrow screens: show only the dot; the tooltip keeps the text. */
+@media (max-width: 420px) {
+  .status-pill .status-label {
+    display: none;
+  }
+}
+
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.status-error {
+  font-weight: 400;
+}
+
+/* ---------- Detail list ---------- */
+.detail-list {
+  margin: 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+  border-bottom: 0;
+}
+
+.detail-row dt {
+  color: var(--color-text-muted);
+}
+
+.detail-row dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* ---------- Module list ---------- */
+.module-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.module-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.92rem;
+}
+
+.module-list li:last-child {
+  border-bottom: 0;
+}
+
+/* ---------- Empty state ---------- */
+.empty-state {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--color-text-muted);
+}
+
+.empty-state-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--color-neutral);
+}
+
+.empty-state h3 {
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.empty-state-body p {
+  margin: 4px auto;
+  max-width: 460px;
+}
+
+/* ---------- AI model status rows (dashboard) ---------- */
+.model-row {
+  align-items: flex-start !important;
+}
+
+.model-row-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.badge-ok { background: var(--color-ok-bg); color: var(--color-ok); }
+.badge-warn { background: var(--color-warn-bg); color: var(--color-warn); }
+.badge-danger { background: var(--color-danger-bg); color: var(--color-danger); }

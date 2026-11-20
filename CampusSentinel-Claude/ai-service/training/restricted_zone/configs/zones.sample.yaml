@@ -1,0 +1,54 @@
+# CampusSentinel — restricted-zone configuration (SAMPLE, FICTIONAL ZONES)
+#
+# The zones, coordinates and schedules below are invented for demonstration.
+# They do not describe any real campus. Replace them with zones drawn on your
+# own camera image (see pick_zone.py) and schedules approved by campus staff.
+
+# All schedules are evaluated in this IANA time zone, NOT the computer's clock setting.
+campus_timezone: Asia/Kolkata
+
+camera_id: demo-camera-01
+
+detector:
+  weights: models/person/yolo26n.pt   # relative to ai-service/; downloaded on first use
+  confidence: 0.40                    # minimum person confidence
+  iou: 0.50                           # non-maximum-suppression overlap threshold
+  image_size: 640                     # inference resolution (lower = faster, less accurate)
+  device: auto                        # auto | cuda | cpu
+  half: true                          # float16 on CUDA (less VRAM); ignored on CPU
+
+tracker:
+  config: training/restricted_zone/trackers/bytetrack_campus.yaml
+
+incidents:
+  min_dwell_seconds: 1.0     # person must stay inside a restricted zone this long
+  cooldown_seconds: 300      # no repeat incident for the same person + zone within 5 minutes
+  save_evidence_frames: true
+
+# Polygon points are NORMALISED [x, y]: x = 0 (left) … 1 (right), y = 0 (top) … 1 (bottom).
+# status: restricted → the schedule decides; allowed → never produces incidents.
+# Schedule precedence: restricted window > allowed window > default.
+# Windows: start inclusive, end exclusive. If end <= start the window crosses midnight;
+# `days` is the day the window STARTS. Use end "24:00" for "until midnight".
+zones:
+  - id: zone-a-library-hall
+    name: Library Hall A (fictional)
+    status: restricted
+    polygon: [[0.05, 0.55], [0.45, 0.50], [0.50, 0.98], [0.02, 0.98]]
+    schedule:
+      default: restricted          # weekends + nights are restricted
+      allowed:
+        - days: [mon, tue, wed, thu, fri]
+          start: "06:00"
+          end: "20:00"
+
+  - id: zone-b-lab-corridor
+    name: Lab Corridor B (fictional)
+    status: restricted
+    polygon: [[0.55, 0.50], [0.95, 0.52], [0.98, 0.98], [0.52, 0.98]]
+    schedule:
+      default: allowed             # open unless a restricted window applies
+      restricted:
+        - days: [mon, tue, wed, thu, fri, sat, sun]
+          start: "22:00"
+          end: "06:00"             # overnight: 22:00 → 06:00 next morning

@@ -1,0 +1,20 @@
+# Restricted zones for simulated camera 'cos' (COS).
+# FICTIONAL demo zones and schedules: not real campus rules. Same format as ../zones.sample.yaml.
+# Redraw polygons for your own clip with: python -m training.restricted_zone.pick_zone --source <video>
+# (detector.weights is ignored by the AI service, which uses the model chosen in inference/model_manager.py)
+campus_timezone: Asia/Kolkata
+camera_id: cos
+detector: {weights: models/person/yolo26n.pt, confidence: 0.4, iou: 0.5, image_size: 640,
+  device: auto, half: true}
+tracker: {config: training/restricted_zone/trackers/bytetrack_campus.yaml}
+incidents: {min_dwell_seconds: 1.0, cooldown_seconds: 300, save_evidence_frames: true}
+zones:
+- id: cos-store-room
+  name: COS store-room approach (fictional)
+  status: restricted
+  polygon:
+  - [0.0, 0.6]
+  - [0.5, 0.6]
+  - [0.5, 1.0]
+  - [0.0, 1.0]
+  schedule: {default: restricted}

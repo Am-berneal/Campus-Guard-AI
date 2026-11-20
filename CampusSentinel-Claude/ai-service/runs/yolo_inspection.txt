@@ -1,0 +1,58 @@
+Read-only inspection. Search roots: ['C:\\Users\\hp\\Projects\\CampusSentinel-Claude']
+Skipped: ['.git', '.idea', '.venv', '.vscode', '__pycache__', 'node_modules', 'venv']; 'dataset_smoking' (classification data, no boxes) not scanned.
+
+==============================================================================
+1. Environment
+==============================================================================
+  Python      3.12.10 (C:\Users\hp\Projects\CampusSentinel-Claude\ai-service\.venv\Scripts\python.exe)
+  PyTorch     2.15.0+cu134  CUDA available: True  (NVIDIA GeForce RTX 4050 Laptop GPU)
+  ultralytics NOT INSTALLED
+  torchvision 0.29.2
+  opencv-pythonNOT INSTALLED
+  PyYAML      NOT INSTALLED
+  matplotlib  3.11.2
+
+==============================================================================
+2. Existing YOLO code, docs and weight files
+==============================================================================
+  ai-service/training/smoking/yolo: 3 file(s)
+      training\smoking\yolo\inspect_assets.py  (12 KB)
+      training\smoking\yolo\README.md  (5 KB)
+      training\smoking\yolo\__init__.py  (0 B)
+  ai-service/models/smoking: 4 file(s)
+      models\smoking\cnn\README.md  (648 B)
+      models\smoking\cnn\smoking_cnn_best.json  (2 KB)
+      models\smoking\cnn\smoking_cnn_best.pt  (2 MB)
+      models\smoking\yolo\README.md  (592 B)
+  ai-service/docs: (does not exist)
+  ai-service/runs: 5 file(s)
+      runs\yolo_inspection.txt  (0 B)
+      runs\smoking_cnn\history.csv  (2 KB)
+      runs\smoking_cnn\last.pt  (5 MB)
+      runs\smoking_cnn\preview_train_batch.png  (1 MB)
+      runs\smoking_cnn\train.log  (2 KB)
+  docs/ (project root): ['PROJECT_STATUS.md', 'api-contract.md', 'architecture.md', 'datasets.md', 'model-cards']
+
+  Weight files (*.pt, *.onnx) found anywhere under the search roots:
+      C:\Users\hp\Projects\CampusSentinel-Claude\ai-service\models\smoking\cnn\smoking_cnn_best.pt  (2 MB)
+      C:\Users\hp\Projects\CampusSentinel-Claude\ai-service\runs\smoking_cnn\last.pt  (5 MB)
+
+==============================================================================
+3. Dataset configuration YAMLs
+==============================================================================
+  (PyYAML not installed: showing raw text of candidate files)
+  none found
+
+==============================================================================
+4. YOLO-format label folders
+==============================================================================
+  none found
+
+==============================================================================
+5. Other annotation formats (COCO JSON / Pascal VOC XML)
+==============================================================================
+  none found
+
+==============================================================================
+Done — nothing was modified.
+==============================================================================

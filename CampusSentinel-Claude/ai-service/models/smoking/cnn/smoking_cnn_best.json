@@ -1,0 +1,69 @@
+{
+  "format_version": 1,
+  "model_name": "SmokingCNN",
+  "origin": "trained from scratch (no pretrained weights)",
+  "model_config": {
+    "in_channels": 3,
+    "channels": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "hidden_units": 256,
+    "dropout": 0.5
+  },
+  "class_names": [
+    "not_smoking",
+    "smoking"
+  ],
+  "positive_class": "smoking",
+  "positive_index": 1,
+  "output": "single logit; probability(smoking) = sigmoid(logit)",
+  "decision_threshold": 0.5,
+  "image_size": 224,
+  "normalization": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "preprocessing": "EXIF-orient, RGB, resize to 224x224 (no aspect preservation), scale to [0,1], normalise",
+  "best_epoch": 18,
+  "best_val_metrics": {
+    "val_loss": 0.49471545148463475,
+    "accuracy": 0.7707231040564374,
+    "precision": 0.8011152416356877,
+    "recall": 0.738013698630137,
+    "f1": 0.7682709447415331,
+    "roc_auc": 0.8430012453300124,
+    "tp": 431,
+    "tn": 443,
+    "fp": 107,
+    "fn": 153,
+    "threshold": 0.5
+  },
+  "train_config": {
+    "epochs_max": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "optimizer": "Adam",
+    "loss": "BCEWithLogitsLoss",
+    "amp": true,
+    "seed": 42,
+    "patience": 5,
+    "lr_scheduler": "ReduceLROnPlateau(factor=0.5, patience=2)",
+    "augmentation": "RandomHorizontalFlip(0.5), RandomRotation(10)",
+    "split_file": "split_seed42.json",
+    "split_md5": "0ddb729db7683fc82097dc869d7941b7",
+    "train_images": 4536,
+    "val_images": 1134
+  },
+  "torch_version": "2.15.0+cu134"
+}

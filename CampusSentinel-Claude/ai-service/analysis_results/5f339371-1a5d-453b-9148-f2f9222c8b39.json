@@ -1,0 +1,260 @@
+{
+ "upload_id": "5f339371-1a5d-453b-9148-f2f9222c8b39",
+ "camera_id": "b_block",
+ "camera_name": "B Block",
+ "source": "simulated camera (uploaded recording)",
+ "status": "completed",
+ "video": {
+  "fps": 30.0,
+  "frame_count": 61,
+  "width": 352,
+  "height": 240,
+  "duration_seconds": 2.03
+ },
+ "analysis": {
+  "fighting": {
+   "available": true,
+   "status": "completed",
+   "model": "cnn_lstm",
+   "predicted_class": "NonFight",
+   "fight_probability": 0.2258,
+   "nonfight_probability": 0.7742,
+   "threshold": 0.5,
+   "potential_incident": false,
+   "events": [],
+   "windows": [
+    {
+     "window": 0,
+     "start_frame": 0,
+     "end_frame": 60,
+     "start_s": 0.0,
+     "end_s": 2.0,
+     "fight_probability": 0.2258
+    }
+   ],
+   "sampling": {
+    "window_seconds": 5.0,
+    "frames_per_window": 16,
+    "windows_analysed": 1,
+    "frame_indices_first_window": [
+     0,
+     4,
+     8,
+     12,
+     16,
+     20,
+     24,
+     28,
+     31,
+     35,
+     39,
+     43,
+     47,
+     51,
+     55,
+     59
+    ]
+   },
+   "notes": [
+    "window 0-61 skipped: frames could not be decoded",
+    "window decoding failed; used whole-video sampling (prepare_data.process_video)"
+   ]
+  },
+  "smoking": {
+   "available": true,
+   "status": "completed",
+   "models": {
+    "smoking_cnn": true,
+    "cigarette_yolo": true
+   },
+   "potential_incident": true,
+   "events": [
+    {
+     "event_id": "smoking-15",
+     "type": "smoking",
+     "start_s": 0.5,
+     "end_s": 1.0,
+     "confidence": 0.7524,
+     "description": "Possible smoking between 0.5s and 1.0s: 2 sampled frames met rule 'both'; max CNN 0.78; max cigarette 0.76. A visible cigarette alone does not prove smoking.",
+     "evidence": [
+      {
+       "time_s": 0.5,
+       "frame_index": 15,
+       "confidence": 0.7524,
+       "image": "smoking_1_15.jpg",
+       "details": {
+        "cnn_smoking_probability": 0.7524,
+        "max_cigarette_confidence": 0.7607,
+        "cigarette_boxes": [
+         {
+          "class_id": 0,
+          "class_name": "cigarette",
+          "confidence": 0.7607,
+          "bbox_xyxy": [
+           242.6,
+           131.1,
+           273.4,
+           153.6
+          ],
+          "bbox_xyxy_norm": [
+           0.6891,
+           0.5462,
+           0.7766,
+           0.6399
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "time_s": 1.0,
+       "frame_index": 30,
+       "confidence": 0.4092,
+       "image": "smoking_1_30.jpg",
+       "details": {
+        "cnn_smoking_probability": 0.777,
+        "max_cigarette_confidence": 0.4092,
+        "cigarette_boxes": [
+         {
+          "class_id": 0,
+          "class_name": "cigarette",
+          "confidence": 0.4092,
+          "bbox_xyxy": [
+           247.2,
+           129.4,
+           276.9,
+           147.2
+          ],
+          "bbox_xyxy_norm": [
+           0.7023,
+           0.539,
+           0.7867,
+           0.6135
+          ]
+         }
+        ]
+       }
+      }
+     ]
+    }
+   ],
+   "rule": "both",
+   "thresholds": {
+    "cnn": 0.5,
+    "cigarette": 0.35,
+    "min_frames": 2
+   },
+   "summary": {
+    "frames_sampled": 4,
+    "sample_interval_s": 0.5,
+    "frames_cnn_positive": 4,
+    "frames_with_cigarette": 2,
+    "max_cnn_smoking_probability": 0.7813,
+    "mean_cnn_smoking_probability": 0.772,
+    "max_cigarette_confidence": 0.7607
+   },
+   "detections": [
+    {
+     "time_s": 0.5,
+     "frame_index": 15,
+     "max_cigarette_confidence": 0.7607,
+     "cnn_smoking_probability": 0.7524,
+     "cigarette_boxes": [
+      {
+       "class_id": 0,
+       "class_name": "cigarette",
+       "confidence": 0.7607,
+       "bbox_xyxy": [
+        242.6,
+        131.1,
+        273.4,
+        153.6
+       ],
+       "bbox_xyxy_norm": [
+        0.6891,
+        0.5462,
+        0.7766,
+        0.6399
+       ]
+      }
+     ]
+    },
+    {
+     "time_s": 1.0,
+     "frame_index": 30,
+     "max_cigarette_confidence": 0.4092,
+     "cnn_smoking_probability": 0.777,
+     "cigarette_boxes": [
+      {
+       "class_id": 0,
+       "class_name": "cigarette",
+       "confidence": 0.4092,
+       "bbox_xyxy": [
+        247.2,
+        129.4,
+        276.9,
+        147.2
+       ],
+       "bbox_xyxy_norm": [
+        0.7023,
+        0.539,
+        0.7867,
+        0.6135
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": []
+  },
+  "restricted_zone": {
+   "available": true,
+   "status": "completed",
+   "potential_incident": false,
+   "events": [],
+   "zones": [
+    {
+     "zone_id": "b-block-lab-corridor",
+     "name": "B Block lab corridor (fictional)",
+     "restricted_during_video": false
+    }
+   ],
+   "summary": {
+    "frames_sampled": 11,
+    "sample_fps": 5.0,
+    "max_people_in_frame": 2,
+    "recorded_at_local": "2026-11-18T11:32:56+05:30",
+    "recorded_at_source": "analysis time (no recording time given)",
+    "campus_timezone": "Asia/Kolkata",
+    "config": "b_block.yaml"
+   }
+  }
+ },
+ "potential_incident_count": 1,
+ "processing": {
+  "device": "cuda",
+  "duration_seconds": 2.63,
+  "module_seconds": {
+   "fighting": 0.49,
+   "smoking": 1.46,
+   "restricted_zone": 0.67
+  },
+  "started_at": "2026-11-18T06:02:54+00:00",
+  "settings": {
+   "device": "auto",
+   "fight_threshold": null,
+   "fight_window_seconds": 5.0,
+   "fight_max_windows": 24,
+   "smoking_sample_interval_s": 0.5,
+   "smoking_max_frames": 240,
+   "smoking_cnn_threshold": 0.5,
+   "cigarette_confidence": 0.35,
+   "smoking_rule": "both",
+   "smoking_min_frames": 2,
+   "zone_sample_fps": 5.0,
+   "event_gap_s": 2.0,
+   "max_evidence_per_event": 3
+  }
+ },
+ "disclaimer": "All results are POTENTIAL incidents produced by AI models from a simulated camera upload. They may be wrong and must be reviewed by an administrator before any action."
+}

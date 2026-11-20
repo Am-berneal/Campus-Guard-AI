@@ -1,0 +1,52 @@
+{
+  "note": "VALIDATION metrics (RWF-2000 has no test split); selected by lowest validation loss",
+  "best_epoch": 3,
+  "best_val_loss": 0.567258,
+  "val_metrics": {
+    "loss": 0.5672576239705086,
+    "accuracy": 0.7075,
+    "precision": 0.7643312101910829,
+    "recall": 0.6,
+    "f1": 0.6722689075630253,
+    "roc_auc": 0.788375,
+    "tp": 120,
+    "tn": 163,
+    "fp": 37,
+    "fn": 80,
+    "threshold": 0.5,
+    "n": 400
+  },
+  "model_config": {
+    "feature_dim": 512,
+    "hidden_size": 256,
+    "num_layers": 1,
+    "lstm_dropout": 0.3,
+    "head_dropout": 0.5,
+    "pretrained": true,
+    "freeze_backbone": true,
+    "train_layer4": false
+  },
+  "train_config": {
+    "epochs": 20,
+    "batch_size": 4,
+    "lr": 0.001,
+    "backbone_lr": 0.0001,
+    "weight_decay": 0.01,
+    "patience": 5,
+    "lr_patience": 2,
+    "threshold": 0.5,
+    "workers": 0,
+    "amp": false,
+    "hflip": true,
+    "seed": 42,
+    "extra": {
+      "data_root": "D:\\CampusSentinel-Datasets\\fighting_processed",
+      "max_batches": 0
+    }
+  },
+  "class_mapping": {
+    "0": "NonFight",
+    "1": "Fight"
+  },
+  "run_dir": "C:\\Users\\hp\\Projects\\CampusSentinel-Claude\\campussentinel-fighting-cnn-lstm\\ai-service\\runs\\fighting\\train_20261115_131203"
+}
